@@ -3,7 +3,7 @@
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
-            "perspective1"
+            "bs_relations"
         ],
         "onlyInstancePages": [
         ]
