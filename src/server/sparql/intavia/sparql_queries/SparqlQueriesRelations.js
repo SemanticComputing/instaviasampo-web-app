@@ -1,33 +1,17 @@
-const perspectiveID = 'bs_relations'
+const perspectiveID = 'relations'
 
-export const placeRelationProperties = `
+export const relationProperties = `
     {
-      ?id skos:prefLabel ?prefLabel__id .
+      ?id rdfs:label  ?prefLabel__id .
       BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-      BIND(?id as ?uri__id)
-      BIND(?id as ?uri__dataProviderUrl)
-      BIND(?id as ?uri__prefLabel)
+      #BIND(?id as ?uri__id)
+      ##BIND(?id as ?uri__dataProviderUrl)
+      #BIND(?id as ?uri__prefLabel)
     }
     UNION
     {
-      ?id relse:personSubject/^owl:sameAs ?person__id .
-      ?person__id skos:prefLabel ?person__prefLabel .
-    }
-    UNION
-    {
-      ?id relse:placeObject ?place__id .
-      ?place__id skos:prefLabel ?place__prefLabel .
-    }
-    UNION
-    {
-      ?id relse:relationType ?relationType__id .
-      ?relationType__id skos:prefLabel ?relationType__prefLabel .
-    }
-    UNION
-    {
-      ?id relse:sourceLink ?source__id .
-      ?id relse:sourceName ?source__prefLabel .
-      BIND (?source__id AS ?source__dataProviderUrl)
+      ?id itv:description ?prefLabel__id .
+      BIND(?prefLabel__id AS ?prefLabel__prefLabel)
     }
 `
 

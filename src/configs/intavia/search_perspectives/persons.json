@@ -1,14 +1,14 @@
 {
-    "id": "bs_relations",
+    "id": "persons",
     "endpoint": {
-        "url": "http://localhost:3042/ds",
+        "url": "http://localhost:3072/ds",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
-    "sparqlQueriesFile": "SparqlQueriesRelations.js",
+    "sparqlQueriesFile": "SparqlQueriesPersons.js",
     "baseURI": "http://ldf.fi/mmm",
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
-    "facetClass": "relse:Relation",
+    "facetClass": "crm:E21_Person",
     "frontPageImage": "main_page/works-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
@@ -26,32 +26,17 @@
     },
     "defaultInstancePageTab": "table",
     "resultClasses": {
-        "bs_relations": {
+        "persons": {
             "paginatedResultsConfig": {
                 "tabID": 0,
                 "component": "ResultTable",
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
-                "propertiesQueryBlock": "placeRelationProperties",
+                "propertiesQueryBlock": "personProperties",
                 "pagesize": 10,
                 "sortBy": null,
                 "sortDirection": null
             }
-        },
-        "placesHeatmap": {
-            "tabID": 1,
-            "tabPath": "heatmap",
-            "tabIcon": "AddLocation",
-            "component": "Deck",
-            "layerType": "heatmapLayer",
-            "sparqlQuery": "placesQuery",
-            "facetClass": "bs_relations",
-            "filterTarget": "id",
-            "resultMapper": "mapPlaces"
-        },
-        "knowledgeGraphMetadata": {
-            "sparqlQuery": "knowledgeGraphMetadataQuery",
-            "resultMapper": "makeObjectList"
         }
     },
     "properties": [
@@ -74,7 +59,7 @@
             "minWidth": 250
         },
         {
-            "id": "person",
+            "id": "sourceCountry",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
@@ -83,7 +68,7 @@
             "minWidth": 250
         },
         {
-            "id": "place",
+            "id": "birthPlace",
             "valueType": "object",
             "makeLink": true,
             "externalLink": true,
@@ -92,28 +77,36 @@
             "minWidth": 150
         },
         {
-            "id": "source",
+            "id": "deathPlace",
             "valueType": "object",
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 150,
-            "onlyOnInstancePage": true
+            "minWidth": 150
         },
         {
-            "id": "relationType",
+            "id": "occupation",
             "valueType": "object",
-            "makeLink": true,
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150
+        },
+        {
+            "id": "birthYear",
+            "valueType": "string",
+            "makeLink": false,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
             "minWidth": 250
         },
         {
-            "id": "source",
-            "valueType": "object",
-            "makeLink": true,
+            "id": "deathYear",
+            "valueType": "string",
+            "makeLink": false,
             "externalLink": true,
             "sortValues": true,
             "numberedList": false,
@@ -121,71 +114,73 @@
         }
     ],
     "facets": {
-        "person": {
+        "sourceCountry": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "relse:personSubject/^owl:sameAs",
+            "predicate": "itv:countryOfOrigin",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "pieChartButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:countryOfOrigin",
+            "sortDirection": "desc"
+        },
+        "birthPlace": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:birthPlace",
+            "facetLabelPredicate": "rdfs:label",
             "searchField": true,
             "sortButton": true,
             "hideUnknownValue": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "relse:personSubject/^owl:sameAs/skos:prefLabel",
+            "sortByPredicate": "itv:birthPlace/rdfs:label",
             "sortDirection": "desc"
         },
-        "title": {
-            "barChartButton": true,
-            "containerClass": "ten",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "relse:personSubject/^owl:sameAs/foaf:focus/^bioc:inheres_in/nbf:has_title",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "^frbroo:R19_created_a_realisation_of/frbroo:R17_created/crm:P72_has_language/skos:prefLabel",
-            "sortDirection": "desc",
-            "facetType": "hierarchical",
-            "parentProperty": "skos:broader",
-            "hideUnknownValue": true
-        },
-        "place": {
-            "barChartButton": true,
-            "containerClass": "ten",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "relse:placeObject/relse:nbf",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "relse:placeObject/skos:prefLabel",
-            "sortDirection": "desc",
-            "facetType": "hierarchical",
-            "parentProperty": "skos:broader",
-            "hideUnknownValue": true
-        },
-        "relationType": {
+        "deathPlace": {
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "predicate": "relse:relationType",
+            "predicate": "itv:deathPlace",
+            "facetLabelPredicate": "rdfs:label",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "relse:relationType/skos:prefLabel",
+            "sortByPredicate": "itv:deathPlace/rdfs:label",
             "hideUnknownValue": true,
             "sortDirection": "desc"
         },
-        "time": {
-            "containerClass": "four",
-            "endProperty": "crm:P82b_end_of_the_end",
-            "facetType": "timespan",
-            "filterType": "timespanFilter",
-            "max": null,
-            "min": null,
-            "predicate": "^mmm-schema:manuscript_work/^crm:P108_has_produced/crm:P4_has_time-span",
-            "sortByAscPredicate": "^mmm-schema:manuscript_work/^crm:P108_has_produced/crm:P4_has_time-span/crm:P82a_begin_of_the_begin",
-            "sortByDescPredicate": "^mmm-schema:manuscript_work/^crm:P108_has_produced/crm:P4_has_time-span/crm:P82b_end_of_the_end",
-            "startProperty": "crm:P82a_begin_of_the_begin"
+        "gender": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:gender",
+            "pieChartButton": true,
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:gender",
+            "hideUnknownValue": true,
+            "sortDirection": "desc"
+        },
+        "occupation": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:occupation",
+            "literal": true,
+            "pieChartButton": true,
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "has_occupation",
+            "hideUnknownValue": true,
+            "sortDirection": "desc"
         }
     }
 }

@@ -1,0 +1,144 @@
+{
+    "id": "relations",
+    "endpoint": {
+        "url": "http://localhost:3072/ds",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesRelations.js",
+    "baseURI": "http://ldf.fi/mmm",
+    "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
+    "facetClass": "itv:Relation",
+    "frontPageImage": "main_page/works-452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "maps": {
+        "placesHeatmap": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 2
+        }
+    },
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "relations": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "relationProperties",
+                "pagesize": 10,
+                "sortBy": null,
+                "sortDirection": null
+            }
+        },
+        "placesHeatmap": {
+            "tabID": 1,
+            "tabPath": "heatmap",
+            "tabIcon": "AddLocation",
+            "component": "Deck",
+            "layerType": "heatmapLayer",
+            "sparqlQuery": "placesQuery",
+            "facetClass": "relations",
+            "filterTarget": "id",
+            "resultMapper": "mapPlaces"
+        },
+        "knowledgeGraphMetadata": {
+            "sparqlQuery": "knowledgeGraphMetadataQuery",
+            "resultMapper": "makeObjectList"
+        }
+    },
+    "properties": [
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 250
+        }
+    ],
+    "facets": {
+        "relationType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationType",
+            "facetLabelPredicate": "rdfs:label",
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationType/rdfs:label",
+            "sortDirection": "desc"
+        },
+        "personA": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationSubject",
+            "facetLabelPredicate": "rdfs:label",
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationSubject/rdfs:label",
+            "sortDirection": "desc"
+        },
+        "personACountry": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationSubject/itv:countryOfOrigin",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationSubject/countryOfOrigin",
+            "sortDirection": "desc"
+        },
+        "personB": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationObject",
+            "facetLabelPredicate": "rdfs:label",
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationObject/rdfs:label",
+            "sortDirection": "desc"
+        },
+        "personBCountry": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationObject/itv:countryOfOrigin",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationObject/countryOfOrigin",
+            "sortDirection": "desc"
+        }
+    }
+}
