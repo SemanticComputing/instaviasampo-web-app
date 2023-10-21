@@ -6,7 +6,7 @@
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesPersons.js",
-    "baseURI": "http://ldf.fi/mmm",
+    "baseURI": "http://www.intavia.eu/apis/personproxy/",
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
     "facetClass": "crm:E21_Person",
     "frontPageImage": "main_page/works-452x262.jpg",
@@ -16,7 +16,7 @@
     ],
     "defaultTab": "table",
     "maps": {
-        "placesHeatmap": {
+        "birthPlacesHeatmap": {
             "center": [
                 60.43,
                 20.37
@@ -33,10 +33,34 @@
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
                 "propertiesQueryBlock": "personProperties",
-                "pagesize": 10,
+                "paginatedResultsAlwaysExpandRows": false,
+                "paginatedResultsRowContentMaxHeight": 190,
+                "pagesize": 25,
                 "sortBy": null,
                 "sortDirection": null
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "personProperties",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    }
+                }
             }
+        },
+        "birthPlacesHeatmap": {
+            "tabID": 1,
+            "tabPath": "heatmap",
+            "tabIcon": "AddLocation",
+            "component": "Deck",
+            "layerType": "heatmapLayer",
+            "sparqlQuery": "birthPlacesQuery",
+            "facetClass": "persons",
+            "filterTarget": "id",
+            "resultMapper": "mapPlaces"
         }
     },
     "properties": [
@@ -52,7 +76,7 @@
         {
             "id": "prefLabel",
             "valueType": "object",
-            "makeLink": false,
+            "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,

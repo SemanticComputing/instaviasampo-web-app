@@ -4,9 +4,10 @@ export const personProperties = `
     {
       ?id rdfs:label ?prefLabel__id .
       BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-      #BIND(?id as ?uri__id)
-      ##BIND(?id as ?uri__dataProviderUrl)
-      #BIND(?id as ?uri__prefLabel)
+      BIND(?id as ?uri__id)
+      BIND(?id as ?uri__dataProviderUrl)
+      BIND(?id as ?uri__prefLabel)
+      BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id),  "http://ldf.fi/intaviasampo/", "")) AS ?prefLabel__dataProviderUrl)
     }
     UNION
     {
@@ -45,4 +46,14 @@ export const personProperties = `
     {
       ?id itv:age ?age.
     }
+`
+
+export const birthPlacesQuery = `
+  SELECT DISTINCT ?id ?lat ?long
+  (1 as ?instanceCount) # for heatmap
+  WHERE {
+    <FILTER>
+    ?id itv:birthPlace/itv:geoPoint/wgs84:lat ?lat ;
+    itv:birthPlace/itv:geoPoint/wgs84:long ?long .
+  }
 `
