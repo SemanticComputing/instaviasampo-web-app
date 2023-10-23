@@ -10,8 +10,13 @@ export const relationProperties = `
     }
     UNION
     {
-      ?id itv:description ?prefLabel__id .
-      BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+      ?id itv:relationSubject ?relationSubject__id .
+      ?relationSubject__id rdfs:label ?relationSubject__prefLabel .
+    }
+    UNION
+    {
+      ?id itv:relationObject ?relationObject__id .
+      ?relationObject__id rdfs:label ?relationObject__prefLabel .
     }
 `
 

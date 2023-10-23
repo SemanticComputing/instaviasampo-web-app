@@ -279,6 +279,14 @@
           "label": "relationType",
           "description": "The linguistic versions of the works contained in the manuscript."
         },
+        "relationSubject": {
+          "label": "Person A",
+          "description": "The linguistic versions of the works contained in the manuscript."
+        },
+        "relationObject": {
+          "label": "Person B",
+          "description": "The linguistic versions of the works contained in the manuscript."
+        },
         "time": {
           "label": "Time",
           "description": "The location where the manuscript was written. Multiple production places may appear for a single manuscript due to the following reasons: 1) there are discrepancies in the contributing data source, 2) there are discrepancies between several contributing data sources, 3) the precise date is uncertain, 4) the production indeed took place on several occasions (e.g. for composite manuscripts)."
