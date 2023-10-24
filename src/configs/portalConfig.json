@@ -77,8 +77,8 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/mmm-banner.jpg",
-            "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
+            "bannerImage": "main_page/intavia-banner.png",
+            "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,
             "bannerDefaultHeight": 300,

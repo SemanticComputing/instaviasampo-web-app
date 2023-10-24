@@ -1,7 +1,7 @@
 {
     "id": "perspective1",
     "endpoint": {
-        "url": "https://ldf.fi/mmm/sparql",
+        "url": "http://localhost:3072/ds",
         "useAuth": false,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },

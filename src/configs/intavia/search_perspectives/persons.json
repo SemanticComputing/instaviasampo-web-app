@@ -1,7 +1,7 @@
 {
     "id": "persons",
     "endpoint": {
-        "url": "http://localhost:3072/ds",
+        "url": "http://ldf.fi/intaviasampo/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
@@ -9,7 +9,7 @@
     "baseURI": "http://www.intavia.eu/apis/personproxy/",
     "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
     "facetClass": "crm:E21_Person",
-    "frontPageImage": "main_page/works-452x262.jpg",
+    "frontPageImage": "main_page/tekla.png",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [
         "prefLabel"
