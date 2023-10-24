@@ -27,4 +27,5 @@ export const prefixes = `
   PREFIX nbf: <http://ldf.fi/nbf/>
   PREFIX itv: <http://ldf.fi/schema/intaviasampo/>
   PREFIX wd: <http://ldf.fi/schema/intavia/>
+  
 `
