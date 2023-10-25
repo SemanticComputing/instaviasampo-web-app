@@ -44,3 +44,40 @@ export const knowledgeGraphMetadataQuery = `
                       dct:modified ?databaseDump__modified .
   }
 `
+
+// # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
+export const migrationsQuery = `
+  SELECT DISTINCT ?id 
+  ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
+  ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+  (COUNT(DISTINCT ?manuscript) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    ?relation itv:relationSubject/itv:birthPlace ?from__id ;
+            itv:relationObject/itv:birthPlace ?to__id .
+    ?from__id rdfs:label ?from__prefLabel ;
+              geo:lat ?from__lat ;
+              geo:long ?from__long .
+    BIND(STR(?from__id) AS ?from__dataProviderUrl)
+    ?to__id rdfs:label ?to__prefLabel ;
+            geo:lat ?to__lat ;
+            geo:long ?to__long .
+    BIND(STR(?to__id) AS ?to__dataProviderUrl)
+    BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/intaviasampo/place/", ""))) as ?id)
+    FILTER(?from__id != ?to__id)
+  }
+  GROUP BY ?id 
+  ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
+  ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+  ORDER BY desc(?instanceCount)
+`
+
+export const migrationsDialogQuery = `
+  SELECT * {
+    <FILTER>
+    ?id ^crm:P108_has_produced/crm:P7_took_place_at <FROM_ID> ;
+                    mmm-schema:last_known_location <TO_ID> ;
+                    skos:prefLabel ?prefLabel .
+    BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
+  }
+`

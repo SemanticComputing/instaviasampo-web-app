@@ -38,17 +38,6 @@
                 "sortDirection": null
             }
         },
-        "placesHeatmap": {
-            "tabID": 1,
-            "tabPath": "heatmap",
-            "tabIcon": "AddLocation",
-            "component": "Deck",
-            "layerType": "heatmapLayer",
-            "sparqlQuery": "placesQuery",
-            "facetClass": "relations",
-            "filterTarget": "id",
-            "resultMapper": "mapPlaces"
-        },
         "knowledgeGraphMetadata": {
             "sparqlQuery": "knowledgeGraphMetadataQuery",
             "resultMapper": "makeObjectList"
@@ -120,7 +109,7 @@
             "sortDirection": "desc"
         },
         "personACountry": {
-            "containerClass": "ten",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "itv:relationSubject/itv:countryOfOrigin",
@@ -129,7 +118,20 @@
             "sortButton": true,
             "hideUnknownValue": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "itv:relationSubject/countryOfOrigin",
+            "sortByPredicate": "itv:relationSubject/itv:countryOfOrigin",
+            "sortDirection": "desc"
+        },
+        "personAOccupation": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationSubject/itv:occupation",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationSubject/itv:occupation",
             "sortDirection": "desc"
         },
         "personB": {
@@ -146,7 +148,7 @@
             "sortDirection": "desc"
         },
         "personBCountry": {
-            "containerClass": "ten",
+            "containerClass": "four",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "itv:relationObject/itv:countryOfOrigin",
@@ -156,6 +158,19 @@
             "hideUnknownValue": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "itv:relationObject/countryOfOrigin",
+            "sortDirection": "desc"
+        },
+        "personBOccupation": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationObject/itv:occupation",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationObject/itv:occupation",
             "sortDirection": "desc"
         }
     }

@@ -53,7 +53,7 @@ export const birthPlacesQuery = `
   (1 as ?instanceCount) # for heatmap
   WHERE {
     <FILTER>
-    ?id itv:birthPlace/itv:geoPoint/wgs84:lat ?lat ;
-    itv:birthPlace/itv:geoPoint/wgs84:long ?long .
+    ?id itv:birthPlace/wgs84:lat ?lat ;
+    itv:birthPlace/wgs84:long ?long .
   }
 `
