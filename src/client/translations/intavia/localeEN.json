@@ -287,6 +287,14 @@
           "label": "Person B occupation",
           "description": "The linguistic versions of the works contained in the manuscript."
         },
+        "personAGender": {
+          "label": "Person A gender",
+          "description": "The linguistic versions of the works contained in the manuscript."
+        },
+        "personBGender": {
+          "label": "Person B gender",
+          "description": "The linguistic versions of the works contained in the manuscript."
+        },
         "relationSubject": {
           "label": "Person A",
           "description": "The linguistic versions of the works contained in the manuscript."

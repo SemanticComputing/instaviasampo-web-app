@@ -134,6 +134,19 @@
             "sortByPredicate": "itv:relationSubject/itv:occupation",
             "sortDirection": "desc"
         },
+        "personAGender": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationSubject/itv:gender",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationSubject/itv:gender",
+            "sortDirection": "desc"
+        },
         "personB": {
             "containerClass": "ten",
             "facetType": "list",
@@ -171,6 +184,19 @@
             "hideUnknownValue": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "itv:relationObject/itv:occupation",
+            "sortDirection": "desc"
+        },
+        "personBGender": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "itv:relationObject/itv:gender",
+            "literal": true,
+            "searchField": true,
+            "sortButton": true,
+            "hideUnknownValue": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "itv:relationObject/itv:gender",
             "sortDirection": "desc"
         }
     }
