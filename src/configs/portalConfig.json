@@ -17,11 +17,6 @@
                 "id": "en",
                 "label": "English",
                 "filename": "localeEN.json"
-            },
-            {
-                "id": "fi",
-                "label": "English",
-                "filename": "localeFI.json"
             }
         ]
     },
@@ -40,7 +35,7 @@
     "layoutConfig": {
         "colorPalette": {
             "primary": {
-                "main": "#212121"
+                "main": "#4eac5b"
             },
             "secondary": {
                 "main": "#EB1806"
@@ -55,7 +50,8 @@
             "logoImage": "logos/300_intavia_logo.jpg",
             "logoTextTransform": "none",
             "hideLogoTextOnMobile": true,
-            "showLanguageButton": true,
+            "showLanguageButton": false,
+            "showSearchField": false,
             "feedbackLink": "https://link.webropolsurveys.com/...",
             "externalInstructions": false,
             "externalAboutPage": false,
