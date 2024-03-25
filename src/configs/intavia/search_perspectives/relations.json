@@ -22,6 +22,20 @@
                 20.37
             ],
             "zoom": 2
+        },
+        "migrations": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 2
+        },
+        "birthPlacesHeatmap": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 2
         }
     },
     "defaultInstancePageTab": "table",
@@ -37,6 +51,33 @@
                 "sortBy": null,
                 "sortDirection": null
             }
+        },
+        "migrations": {
+            "tabID": 7,
+            "component": "Deck",
+            "tabPath": "migrations",
+            "tabIcon": "Redo",
+            "sparqlQuery": "migrationsQuery",
+            "facetClass": "relations",
+            "filterTarget": "relation",
+            "resultMapper": "makeObjectList",
+            "layerType": "arcLayer",
+            "arcWidthVariable": "instanceCountScaled",
+            "instanceVariable": "relation",
+            "showTooltips": false,
+            "postprocess": {
+                "func": "linearScale",
+                "config": {
+                    "variable": "instanceCount",
+                    "minAllowed": 2,
+                    "maxAllowed": 20
+                }
+            }
+        },
+        "migrationsDialog": {
+            "sparqlQuery": "migrationsDialogQuery",
+            "filterTarget": "id",
+            "resultMapper": "makeObjectList"
         },
         "knowledgeGraphMetadata": {
             "sparqlQuery": "knowledgeGraphMetadataQuery",

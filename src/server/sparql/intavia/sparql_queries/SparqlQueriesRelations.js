@@ -81,3 +81,14 @@ export const migrationsDialogQuery = `
     BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
   }
 `
+
+export const birthPlacesQuery = `
+  SELECT DISTINCT ?id ?lat ?long
+  (1 as ?instanceCount) # for heatmap
+  WHERE {
+    <FILTER>
+    ?id itv:relationObject/itv:birthPlace ?place .
+    ?place wgs84:lat ?lat .
+    ?place wgs84:long ?long .
+  }
+`
